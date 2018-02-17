@@ -88,7 +88,7 @@ apiRoutes.post('/authenticate', function(req, res) {
                     admin: user.admin
                 };
                 const token = jwt.sign(payload, app.get('superSecret'), {
-                    expiresInMinutes: 1440 // expires in 24 hours
+                    expiresIn: 1440 // expires in 24 hours
                 });
 
                 // return the information including token as JSON
