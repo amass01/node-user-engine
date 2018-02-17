@@ -60,7 +60,7 @@ const apiRoutes = express.Router();
 apiRoutes.post('/authenticate', function(req, res) {
 
     // find the user
-    User.findOne({
+    user.findOne({
         name: req.body.name
     }, (err, user) => {
 
