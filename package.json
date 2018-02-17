@@ -4,7 +4,8 @@
   "description": "An user authentication engine written in nodejs on a mongodb database.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/amassarwi/node-user-engine#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
     "mongodb": "^2.2.33",
     "mongoose": "^5.0.6",
     "morgan": "^1.9.0"
