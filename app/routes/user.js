@@ -3,10 +3,10 @@ const userController = require('../controllers/user');
 const config = (apiRoutes) => {
 
     // Create new user
-    apiRoutes.post('/users/create', userController.createUser);
+    apiRoutes.post('/user/create', userController.createUser);
 
-    // route to return all users
-    apiRoutes.get('/users', userController.getAll);
+    // Return all users
+    apiRoutes.get('/user', userController.getAll);
 };
 
 module.exports = {
