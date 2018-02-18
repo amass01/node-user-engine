@@ -8,7 +8,7 @@ An Express.js authentication seed server, written on top of mongo database.
 
 ##### Endpoints:
 
- - `/` - main route, welcome message (not authenticated)
+ - `/` - main route shows welcome message
    - Method: GET
    - Not authenticated - can be reached without token
  - `/api/user` - list all users
