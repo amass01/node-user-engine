@@ -9,6 +9,8 @@ const user   = require('./app/models/user'); // get our mongoose model
 
 const authMiddleware = require('./app/middlewares/auth');
 
+const userApiRoutes = require('./app/routes/user');
+
 // initiate express
 const app         = express();
 const port = process.env.PORT || 9191;
@@ -114,12 +116,7 @@ apiRoutes.get('/', (req, res) => {
     res.json({ message: 'Welcome to the coolest API on earth!' });
 });
 
-// route to return all users (GET http://localhost:8080/api/users)
-apiRoutes.get('/users', (req, res) => {
-    user.find({}, (err, users) => {
-        res.json(users);
-    });
-});
+userApiRoutes.config(apiRoutes);
 
 // apply the routes to our application with the prefix /api
 app.use('/api', apiRoutes);
