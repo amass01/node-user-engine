@@ -7,6 +7,8 @@ const jwt    = require('jsonwebtoken'); // used to create, sign, and verify toke
 const config = require('./app/lib/config'); // get our config file
 const user   = require('./app/models/user'); // get our mongoose model
 
+const authMiddleware = require('./app/middlewares/auth');
+
 // initiate express
 const app         = express();
 const port = process.env.PORT || 9191;
@@ -105,36 +107,7 @@ apiRoutes.post('/authenticate', function(req, res) {
 
 
 // route middleware to verify a token
-apiRoutes.use(function(req, res, next) {
-
-    // check header or url parameters or post parameters for token
-    const token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-    // decode token
-    if (token) {
-
-        // verifies secret and checks exp
-        jwt.verify(token, app.get('superSecret'), function(err, decoded) {
-            if (err) {
-                return res.json({ success: false, message: 'Failed to authenticate token.' });
-            } else {
-                // if everything is good, save to request for use in other routes
-                req.decoded = decoded;
-                next();
-            }
-        });
-
-    } else {
-
-        // if there is no token
-        // return an error
-        return res.status(403).send({
-            success: false,
-            message: 'No token provided.'
-        });
-
-    }
-});
+apiRoutes.use(authMiddleware);
 
 // route to show a random message (GET http://localhost:8080/api/)
 apiRoutes.get('/', (req, res) => {
