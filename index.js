@@ -35,26 +35,6 @@ app.get('/', (req, res) => {
     res.send(`Hello! The API is at http://localhost:'${port}/api`);
 });
 
-// Setup
-app.get('/setup', (req, res) => {
-
-    // create a sample user
-    const nick = new user({
-        name: 'Nick Cerminara',
-        password: 'password',
-        admin: true
-    });
-
-    // save the sample user
-    nick.save((err) => {
-        if (err) throw err;
-
-        console.log('User saved successfully');
-        res.json({ success: true });
-    });
-});
-
-
 // API ROUTES -------------------
 
 // get an instance of the router for api routes
