@@ -4,13 +4,13 @@ const morgan      = require('morgan');
 const mongoose    = require('mongoose');
 
 const jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
-const config = require('./app/lib/config'); // get our config file
-const user   = require('./app/models/user'); // get our mongoose model
+const config = require('./lib/config'); // get our config file
+const user   = require('./models/user'); // get our mongoose model
 
-const authMiddleware = require('./app/middlewares/auth');
+const authMiddleware = require('./middlewares/auth');
 
-const userApiRoutes = require('./app/routes/user');
-const authApiRoutes = require('./app/routes/user');
+const userApiRoutes = require('./routes/user');
+const authApiRoutes = require('./routes/user');
 
 // initiate express
 const app         = express();
